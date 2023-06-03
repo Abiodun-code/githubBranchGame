@@ -1,12 +1,12 @@
-import "react-native-gesture-handler";
 import { useFonts } from 'expo-font';
+import { StatusBar } from 'expo-status-bar';
 import { useCallback } from 'react';
-import { SafeAreaView } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
-import NavigationRoute from "./Navigation";
+
+SplashScreen.preventAutoHideAsync();
 
 export default function App() {
-
   const [fontsLoaded] = useFonts({
     'Black': require('./assets/fonts/NotoSans-Black.ttf'),
     "Bold": require("./assets/fonts/NotoSans-Bold.ttf"),
@@ -26,6 +26,18 @@ export default function App() {
     return null;
   }
   return (
-    <NavigationRoute/>
+    <View style={styles.container} onLayout={onLayoutRootView}>
+      <Text style={{fontFamily: "Regular"}} className="text-6xl text-red-200">Open up App.tsx to start working on your app!</Text>
+      <StatusBar style="auto" />
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
